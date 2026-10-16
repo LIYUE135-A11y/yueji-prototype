@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="allergyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E9D5FF"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+    <filter id="allergyShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#6D5BD0" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <path d="M32 10L54 50H10L32 10z" fill="url(#allergyGrad)" filter="url(#allergyShadow)"/>
+  <rect x="30" y="26" width="4" height="14" rx="2" fill="#FFFFFF"/>
+  <circle cx="32" cy="46" r="2.5" fill="#FFFFFF"/>
+</svg>

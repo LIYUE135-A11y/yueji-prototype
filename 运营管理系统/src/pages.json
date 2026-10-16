@@ -1,0 +1,87 @@
+{
+  "pages": [
+    {
+      "path": "admin/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/product/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/merchant/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/order/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/review/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/aftersale/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/user/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/activity/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/decor/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/community/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "admin/data/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "运营管理系统",
+    "navigationBarBackgroundColor": "#8B7CF6",
+    "backgroundColor": "#F7F5FC"
+  }
+}

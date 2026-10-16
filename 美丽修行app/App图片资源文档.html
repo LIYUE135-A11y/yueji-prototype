@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阅己美妆 - App 图片资源文档</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Microsoft YaHei", SimHei, Arial, sans-serif;
+      background: #FFFFFF;
+      color: #2D2D3A;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #6D5BD0;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .meta {
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+    h2 {
+      color: #8B7CF6;
+      font-size: 18px;
+      margin: 28px 0 14px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #EDE8F8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(139, 124, 246, 0.1);
+      margin-bottom: 8px;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid #F0EBFF;
+      vertical-align: middle;
+      font-size: 13px;
+    }
+    th {
+      background: #F3EEFF;
+      color: #6D5BD0;
+      font-weight: bold;
+    }
+    tr:last-child td { border-bottom: none; }
+    .preview {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #EDE8F8;
+      display: block;
+    }
+    .preview.icon {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      padding: 6px;
+      background: #fff;
+      border: 1px solid #EDE8F8;
+    }
+    .path {
+      color: #666;
+      font-family: Consolas, monospace;
+      font-size: 12px;
+    }
+    .usage { color: #8B7CF6; }
+    .note {
+      margin-top: 32px;
+      padding: 14px 16px;
+      background: #F3EEFF;
+      border-radius: 10px;
+      font-size: 13px;
+      color: #6D5BD0;
+    }
+  </style>
+</head>
+<body>
+  <h1>阅己美妆 App 图片资源文档</h1>
+  <p class="meta">汇总项目中全部图片素材路径、用途与预览，便于查阅与替换。</p>
+
+  <h2>一、商品与广告图（static/images）</h2>
+  <table>
+    <tr>
+      <th>预览</th>
+      <th>文件名</th>
+      <th>路径</th>
+      <th>用途</th>
+    </tr>
+    <tr>
+      <td><img class="preview" src="static/images/ad-banner.jpg" alt="广告" /></td>
+      <td>ad-banner.jpg</td>
+      <td class="path">static/images/ad-banner.jpg</td>
+      <td class="usage">首页广告横幅</td>
+    </tr>
+    <tr>
+      <td><img class="preview" src="static/images/lipstick-1.jpg" alt="试用1" /></td>
+      <td>lipstick-1.jpg</td>
+      <td class="path">static/images/lipstick-1.jpg</td>
+      <td class="usage">口红商品 · 优选试用 / 列表</td>
+    </tr>
+    <tr>
+      <td><img class="preview" src="static/images/lipstick-2.jpg" alt="试用2" /></td>
+      <td>lipstick-2.jpg</td>
+      <td class="path">static/images/lipstick-2.jpg</td>
+      <td class="usage">口红商品 · 优选试用 / 列表</td>
+    </tr>
+    <tr>
+      <td><img class="preview" src="static/images/lipstick-3.jpg" alt="精华" /></td>
+      <td>lipstick-3.jpg</td>
+      <td class="path">static/images/lipstick-3.jpg</td>
+      <td class="usage">口红商品 · 爆款 / 列表</td>
+    </tr>
+    <tr>
+      <td><img class="preview" src="static/images/lipstick-4.jpg" alt="修护盒" /></td>
+      <td>lipstick-4.jpg</td>
+      <td class="path">static/images/lipstick-4.jpg</td>
+      <td class="usage">口红商品 · 爆款 / 列表</td>
+    </tr>
+  </table>
+
+  <h2>二、功能入口与顶栏图标（static/features）</h2>
+  <table>
+    <tr>
+      <th>预览</th>
+      <th>文件名</th>
+      <th>路径</th>
+      <th>用途</th>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/skin.svg" alt="测肤" /></td>
+      <td>skin.svg</td>
+      <td class="path">static/features/skin.svg</td>
+      <td class="usage">AI测肤</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/plan.svg" alt="方案" /></td>
+      <td>plan.svg</td>
+      <td class="path">static/features/plan.svg</td>
+      <td class="usage">AI定制方案</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/rank.svg" alt="榜单" /></td>
+      <td>rank.svg</td>
+      <td class="path">static/features/rank.svg</td>
+      <td class="usage">阅己榜单</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/batch.svg" alt="批号" /></td>
+      <td>batch.svg</td>
+      <td class="path">static/features/batch.svg</td>
+      <td class="usage">批号查询</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/desk.svg" alt="梳妆台" /></td>
+      <td>desk.svg</td>
+      <td class="path">static/features/desk.svg</td>
+      <td class="usage">我的梳妆台</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/message.svg" alt="消息" /></td>
+      <td>message.svg</td>
+      <td class="path">static/features/message.svg</td>
+      <td class="usage">顶部消息图标</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/features/points.svg" alt="积分" /></td>
+      <td>points.svg</td>
+      <td class="path">static/features/points.svg</td>
+      <td class="usage">顶部积分图标</td>
+    </tr>
+  </table>
+
+  <h2>三、底部 Tab 图标（static/tabbar）</h2>
+  <table>
+    <tr>
+      <th>预览（默认）</th>
+      <th>预览（选中）</th>
+      <th>文件名</th>
+      <th>路径</th>
+      <th>用途</th>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/tabbar/home.png" alt="首页" /></td>
+      <td><img class="preview icon" src="static/tabbar/home-active.png" alt="首页选中" /></td>
+      <td>home.png / home-active.png</td>
+      <td class="path">static/tabbar/</td>
+      <td class="usage">首页</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/tabbar/discover.png" alt="发现" /></td>
+      <td><img class="preview icon" src="static/tabbar/discover-active.png" alt="发现选中" /></td>
+      <td>discover.png / discover-active.png</td>
+      <td class="path">static/tabbar/</td>
+      <td class="usage">发现</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/tabbar/skin.png" alt="测肤" /></td>
+      <td><img class="preview icon" src="static/tabbar/skin-active.png" alt="测肤选中" /></td>
+      <td>skin.png / skin-active.png</td>
+      <td class="path">static/tabbar/</td>
+      <td class="usage">测肤</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/tabbar/box.png" alt="阅己盒" /></td>
+      <td><img class="preview icon" src="static/tabbar/box-active.png" alt="阅己盒选中" /></td>
+      <td>box.png / box-active.png</td>
+      <td class="path">static/tabbar/</td>
+      <td class="usage">阅己盒</td>
+    </tr>
+    <tr>
+      <td><img class="preview icon" src="static/tabbar/profile.png" alt="我的" /></td>
+      <td><img class="preview icon" src="static/tabbar/profile-active.png" alt="我的选中" /></td>
+      <td>profile.png / profile-active.png</td>
+      <td class="path">static/tabbar/</td>
+      <td class="usage">我的</td>
+    </tr>
+  </table>
+  <p class="meta">说明：Tab 图标可由 scripts/generate_icons.py 重新生成。</p>
+
+  <div class="note">
+    <strong>使用说明：</strong>替换图片时保持文件名与路径不变，即可在 App 中生效。商品/广告建议使用 JPG；功能图标建议使用 SVG。本文件路径：项目根目录 <span class="path">App图片资源文档.html</span>
+  </div>
+</body>
+</html>

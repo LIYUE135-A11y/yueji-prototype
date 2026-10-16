@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阅己美妆 · 产品展示平台</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Microsoft YaHei", "PingFang SC", SimHei, Arial, sans-serif;
+      background: #F3F4F6;
+      color: #333;
+    }
+
+    .workspace {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+    }
+
+    /* ===== 顶栏（图二：白底清爽） ===== */
+    .toolbar {
+      flex-shrink: 0;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #ECEAF3;
+      box-shadow: 0 1px 0 rgba(124, 92, 240, 0.04);
+      z-index: 100;
+      gap: 16px;
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #7C5CF0, #A78BFA);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(124, 92, 240, 0.28);
+    }
+
+    .brand-text {
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #2D2A3A;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: #999;
+      margin-top: 1px;
+    }
+
+    .view-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #F5F3FF;
+      border-radius: 10px;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .view-btn {
+      border: none;
+      background: transparent;
+      color: #666;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .view-btn:hover {
+      background: rgba(124, 92, 240, 0.08);
+      color: #7C5CF0;
+    }
+
+    .view-btn.active {
+      background: #7C5CF0;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(124, 92, 240, 0.3);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .tool-btn {
+      border: 1px solid #E5E1F0;
+      background: #fff;
+      color: #666;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .tool-btn:hover {
+      border-color: #7C5CF0;
+      color: #7C5CF0;
+      background: #F5F3FF;
+    }
+
+    .status-online {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #16A34A;
+      background: #ECFDF5;
+      border: 1px solid #BBF7D0;
+      padding: 5px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    /* ===== 主体 ===== */
+    .workspace-body {
+      flex: 1;
+      display: flex;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 0;
+      background: #F5F5F7;
+      transition: flex 0.25s ease, width 0.25s ease, opacity 0.2s ease;
+    }
+
+    .panel-app {
+      background: linear-gradient(165deg, #5B4BB5 0%, #7C5CF0 45%, #6D4FD8 100%);
+    }
+
+    .panel-header {
+      flex-shrink: 0;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      background: #fff;
+      border-bottom: 1px solid #EEEAF5;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5B4BB5;
+    }
+
+    .panel-app .panel-header {
+      background: rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .panel-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: #888;
+      background: #F3F0FA;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .panel-app .panel-tag {
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .panel-frame {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .panel-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #0B0B0F;
+    }
+
+    .panel-app .panel-frame {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 分隔条 */
+    .split-divider {
+      width: 5px;
+      flex-shrink: 0;
+      background: #E8E4F0;
+      cursor: col-resize;
+      position: relative;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .split-divider:hover,
+    .split-divider.dragging {
+      background: #7C5CF0;
+    }
+
+    .split-divider::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 2px;
+      height: 32px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ===== 视图模式：左 App · 右运营后台 ===== */
+    .mode-split .panel-app {
+      width: var(--app-panel-width, 470px);
+      flex-shrink: 0;
+    }
+
+    .mode-split .panel-admin {
+      flex: 1;
+      min-width: 360px;
+    }
+
+    .mode-split .split-divider {
+      display: block;
+    }
+
+    .mode-app .panel-app {
+      flex: 1;
+      width: auto !important;
+    }
+
+    .mode-app .panel-admin,
+    .mode-app .split-divider {
+      display: none !important;
+    }
+
+    .mode-app .panel-app .panel-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+
+    .mode-app .panel-app iframe {
+      max-width: 470px;
+      box-shadow: 0 20px 56px rgba(45, 30, 100, 0.35);
+      border-radius: 0;
+    }
+
+    .mode-admin .panel-app,
+    .mode-admin .split-divider {
+      display: none !important;
+    }
+
+    .mode-admin .panel-admin {
+      flex: 1;
+    }
+
+    /* 加载态 */
+    .panel-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #F5F5F7;
+      color: #7C5CF0;
+      font-size: 13px;
+      z-index: 5;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .panel-app .panel-loading {
+      background: transparent;
+      color: #fff;
+    }
+
+    .panel-loading.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      display: none !important;
+    }
+
+    .workspace-footer {
+      flex-shrink: 0;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background: #FAFAFB;
+      border-top: 1px solid #EEEAF5;
+      font-size: 11px;
+      color: #999;
+    }
+
+    .workspace-footer span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 900px) {
+      .toolbar {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 52px;
+        padding: 10px 14px;
+        gap: 10px;
+      }
+
+      .view-switch {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .mode-split .panel-app {
+        width: 400px;
+      }
+
+      .workspace-footer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="workspace mode-split" id="workspace">
+    <header class="toolbar">
+      <div class="toolbar-left">
+        <div class="brand-logo">✨</div>
+        <div class="brand-text">
+          <div class="brand-title">阅己美妆 · 产品展示平台</div>
+          <div class="brand-sub">用户端 App（左）+ 运营管理系统（右）</div>
+        </div>
+      </div>
+
+      <div class="view-switch" role="tablist" aria-label="视图切换">
+        <button class="view-btn" data-mode="app" role="tab" aria-selected="false">App 端</button>
+        <button class="view-btn" data-mode="admin" role="tab" aria-selected="false">运营端</button>
+        <button class="view-btn active" data-mode="split" role="tab" aria-selected="true">双屏模式</button>
+      </div>
+
+      <div class="toolbar-actions">
+        <button class="tool-btn" id="refreshApp" title="刷新用户端">↻ 刷新</button>
+        <button class="tool-btn" id="refreshAdmin" title="刷新运营后台">↻ 后台</button>
+        <span class="status-online" title="系统在线">● 在线</span>
+      </div>
+    </header>
+
+    <div class="workspace-body">
+      <section class="panel panel-app" aria-label="用户端 App">
+        <div class="panel-header">
+          <span>App 端预览</span>
+          <span class="panel-tag">美丽修行app/preview.html</span>
+        </div>
+        <div class="panel-frame">
+          <div class="panel-loading" id="loadingApp">加载 App 预览中…</div>
+          <iframe id="iframeApp" title="阅己美妆 App 预览"></iframe>
+        </div>
+      </section>
+
+      <div class="split-divider" id="splitDivider" title="拖动调整宽度"></div>
+
+      <section class="panel panel-admin" aria-label="运营管理系统">
+        <div class="panel-header">
+          <span>运营管理系统</span>
+          <span class="panel-tag">运营管理系统/preview.html</span>
+        </div>
+        <div class="panel-frame">
+          <div class="panel-loading" id="loadingAdmin">加载运营后台中…</div>
+          <!-- 延迟挂载 src，避免与 App 同时解析两份超大页面导致 Out of Memory -->
+          <iframe id="iframeAdmin" title="运营管理系统预览"></iframe>
+        </div>
+      </section>
+    </div>
+
+    <footer class="workspace-footer">
+      <span>App 端：模拟手机屏幕展示移动端 App 界面</span>
+      <span>运营端：后台管理系统，支持商品 / 订单 / 用户 / 数据管理</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var STORAGE_MODE = 'workspace_view_mode';
+      var STORAGE_WIDTH = 'workspace_app_panel_width';
+
+      /* 若 index 被错误嵌套进 iframe，立即停止，防止递归撑爆内存 */
+      try {
+        var nestHit = window.self !== window.top || !!window.frameElement;
+        if (nestHit) {
+          document.body.innerHTML = '<div style="padding:40px;font:14px/1.6 sans-serif;color:#333">工作台被嵌套加载已拦截（避免内存崩溃）。请直接打开根目录 <b>index.html</b>。</div>';
+          return;
+        }
+      } catch (nestErr) {
+        document.body.innerHTML = '<div style="padding:40px;font:14px/1.6 sans-serif;color:#333">工作台嵌套已拦截。请单独打开根目录 index.html。</div>';
+        return;
+      }
+
+      var workspace = document.getElementById('workspace');
+      var iframeApp = document.getElementById('iframeApp');
+      var iframeAdmin = document.getElementById('iframeAdmin');
+      var splitDivider = document.getElementById('splitDivider');
+      var viewBtns = document.querySelectorAll('.view-btn');
+      var adminLoaded = false;
+      var adminLoadTimer = null;
+      var booting = true;
+      var appBlanked = false;
+
+      function appPreviewUrl(bust) {
+        return '美丽修行app/preview.html?embed=1&v=' + (bust || 'app-boot-7');
+      }
+
+      function adminPreviewUrl(bust) {
+        return '运营管理系统/preview.html?embed=1&v=' + (bust || 'admin-boot-10');
+      }
+
+      function setMode(mode) {
+        workspace.className = 'workspace mode-' + mode;
+        viewBtns.forEach(function (btn) {
+          var active = btn.getAttribute('data-mode') === mode;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        try { localStorage.setItem(STORAGE_MODE, mode); } catch (e) {}
+
+        if (!booting) {
+          if (mode === 'admin') {
+            loadAdminPreview(Date.now());
+            if (iframeApp) {
+              try { iframeApp.src = 'about:blank'; appBlanked = true; } catch (e2) {}
+            }
+          } else if (mode === 'split') {
+            if (appBlanked) {
+              loadAppPreview(Date.now());
+              appBlanked = false;
+              setTimeout(function () { loadAdminPreview(); }, 800);
+            } else {
+              loadAdminPreview();
+            }
+          } else if (mode === 'app' && appBlanked) {
+            loadAppPreview(Date.now());
+            appBlanked = false;
+          }
+        }
+      }
+
+      viewBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setMode(btn.getAttribute('data-mode'));
+        });
+      });
+
+      function showLoading(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('hidden');
+      }
+
+      function hideLoading(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.add('hidden');
+      }
+
+      function bindIframeLoad(iframe, loadingId) {
+        if (!iframe) return;
+        function finish(ev) {
+          hideLoading(loadingId);
+        }
+        iframe.addEventListener('load', finish);
+        iframe.addEventListener('error', finish);
+      }
+      bindIframeLoad(iframeApp, 'loadingApp');
+      bindIframeLoad(iframeAdmin, 'loadingAdmin');
+
+      function loadAppPreview(bust) {
+        showLoading('loadingApp');
+        iframeApp.src = appPreviewUrl(bust);
+        setTimeout(function () { hideLoading('loadingApp'); }, 3000);
+      }
+
+      function loadAdminPreview(bust) {
+        var force = !!bust;
+        var cur = '';
+        try { cur = iframeAdmin.getAttribute('src') || ''; } catch (e0) {}
+        if (adminLoaded && !force && cur.indexOf('运营管理系统/preview.html') >= 0) {
+          hideLoading('loadingAdmin');
+          return;
+        }
+        var nextSrc = adminPreviewUrl(bust || Date.now());
+        showLoading('loadingAdmin');
+        iframeAdmin.src = nextSrc;
+        adminLoaded = true;
+        if (adminLoadTimer) clearTimeout(adminLoadTimer);
+        adminLoadTimer = setTimeout(function () {
+          hideLoading('loadingAdmin');
+        }, 2500);
+      }
+
+      /* 先加载 App，再错峰加载运营端（始终带时间戳，避免 iframe 卡旧版） */
+      loadAppPreview(Date.now());
+      iframeApp.addEventListener('load', function onAppReady() {
+        iframeApp.removeEventListener('load', onAppReady);
+        setTimeout(function () { loadAdminPreview(Date.now()); }, 800);
+      });
+      setTimeout(function () {
+        if (!adminLoaded) loadAdminPreview(Date.now());
+      }, 3500);
+
+      document.getElementById('refreshApp').addEventListener('click', function () {
+        loadAppPreview(Date.now());
+      });
+
+      document.getElementById('refreshAdmin').addEventListener('click', function () {
+        loadAdminPreview(Date.now());
+      });
+
+      var DECOR_ENTRY_KEY = 'zhuangyan_decor_entries_v1';
+      var REMOVED_DECOR_ENTRY_IDS = { EN10006: true };
+
+      function withoutRemovedDecorEntries(entries) {
+        return (entries || []).filter(function (en) {
+          return !REMOVED_DECOR_ENTRY_IDS[en.id];
+        });
+      }
+
+      function getSharedDecorEntries() {
+        try {
+          var raw = localStorage.getItem(DECOR_ENTRY_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) {
+              var filtered = withoutRemovedDecorEntries(parsed);
+              if (filtered.length !== parsed.length) {
+                setSharedDecorEntries(filtered);
+              }
+              return filtered.length ? filtered : null;
+            }
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedDecorEntries(entries) {
+        if (!Array.isArray(entries)) return;
+        var filtered = withoutRemovedDecorEntries(entries).map(function (en) {
+          var c = Object.assign({}, en);
+          if (c.iconUrl && String(c.iconUrl).length > 140000) {
+            c.iconUrl = '';
+            if (!c.icon) c.icon = 'skin.svg';
+          }
+          return c;
+        });
+        try {
+          localStorage.setItem(DECOR_ENTRY_KEY, JSON.stringify(filtered));
+        } catch (e) {}
+        return filtered;
+      }
+
+      function pushDecorEntriesToApp(entries) {
+        if (!Array.isArray(entries)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'decor-entry-sync',
+              entries: entries,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushDecorEntriesToAdmin(entries) {
+        if (!Array.isArray(entries)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'decor-entry-sync',
+              entries: entries,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      iframeApp.addEventListener('load', function () {
+        hideLoading('loadingApp');
+        var entries = getSharedDecorEntries();
+        if (entries) pushDecorEntriesToApp(entries);
+        var products = getSharedProducts();
+        if (products) pushProductsToApp(products);
+        var articles = getSharedArticles();
+        if (articles) pushArticlesToApp(articles);
+        var grasses = getSharedGrasses();
+        if (grasses) pushGrassesToApp(grasses);
+        var topics = getSharedTopics();
+        if (topics) pushTopicsToApp(topics);
+        var circles = getSharedCircles();
+        if (circles) pushCirclesToApp(circles);
+        var users = getSharedUsers();
+        if (users) pushUsersToApp(users);
+        var feeds = getSharedFeeds();
+        if (feeds) pushFeedsToApp(feeds);
+        var activities = getSharedActivities();
+        if (activities) pushActivitiesToApp(activities);
+        var profileOrders = getSharedProfileOrders();
+        if (profileOrders && profileOrders.length) pushProfileOrdersToApp(profileOrders);
+      });
+
+      iframeAdmin.addEventListener('load', function () {
+        hideLoading('loadingAdmin');
+        var entries = getSharedDecorEntries();
+        if (entries && entries.length) {
+          pushDecorEntriesToAdmin(entries);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'decor-entry-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var products = getSharedProducts();
+        if (products) {
+          pushProductsToAdmin(products);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'product-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        // 拉取 APP 端所有商品（含 APP 端新增/百科榜单商品）→ 运营「商品管理」合并展示
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({ type: 'product-request-sync', source: 'workspace' }, '*');
+          }
+        } catch (eReqApp) {}
+        var articles = getSharedArticles();
+        if (articles) {
+          pushArticlesToAdmin(articles);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'article-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var grasses = getSharedGrasses();
+        if (grasses) {
+          pushGrassesToAdmin(grasses);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'grass-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var topics = getSharedTopics();
+        if (topics) {
+          pushTopicsToAdmin(topics);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'topic-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var circles = getSharedCircles();
+        if (circles) {
+          pushCirclesToAdmin(circles);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'circle-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var users = getSharedUsers();
+        if (users) {
+          pushUsersToAdmin(users);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'user-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var feeds = getSharedFeeds();
+        if (feeds) {
+          pushFeedsToAdmin(feeds);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'feed-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var activities = getSharedActivities();
+        if (activities) {
+          pushActivitiesToAdmin(activities);
+        } else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'activity-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        var profileOrders = getSharedProfileOrders();
+        if (profileOrders && profileOrders.length) {
+          pushProfileOrdersToAdmin(profileOrders);
+        } else {
+          try {
+            if (iframeApp.contentWindow) {
+              iframeApp.contentWindow.postMessage({ type: 'profile-order-request-sync' }, '*');
+            }
+          } catch (e) {}
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'review-request-sync' }, '*');
+          }
+        } catch (e) {}
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'decor-entry-sync') return;
+        if (!Array.isArray(e.data.entries)) return;
+        if (e.data.source === 'workspace') return;
+        // 先把完整 entries（含上传封面）推给 APP，再压缩写入工作台缓存
+        pushDecorEntriesToApp(e.data.entries);
+        setSharedDecorEntries(e.data.entries);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'decor-entry-ready') return;
+        var entries = getSharedDecorEntries();
+        if (entries && entries.length) {
+          pushDecorEntriesToAdmin(entries);
+        }
+      });
+
+      var DECOR_PAGE_KEY = 'zhuangyan_decor_pages_v1';
+
+      function getSharedDecorPages() {
+        try {
+          var raw = localStorage.getItem(DECOR_PAGE_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedDecorPages(pages) {
+        if (!Array.isArray(pages)) return;
+        try {
+          localStorage.setItem(DECOR_PAGE_KEY, JSON.stringify(pages));
+        } catch (e) {}
+      }
+
+      function pushDecorPagesToApp(pages) {
+        if (!Array.isArray(pages)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'decor-page-sync',
+              pages: pages,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushDecorPagesToAdmin(pages) {
+        if (!Array.isArray(pages)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'decor-page-sync',
+              pages: pages,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'decor-page-sync') return;
+        if (!Array.isArray(e.data.pages)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedDecorPages(e.data.pages);
+        pushDecorPagesToApp(e.data.pages);
+        pushDecorPagesToAdmin(e.data.pages);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'decor-page-request-sync') return;
+        var pages = getSharedDecorPages();
+        if (pages && pages.length) {
+          pushDecorPagesToApp(pages);
+          pushDecorPagesToAdmin(pages);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'decor-page-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      iframeApp.addEventListener('load', function () {
+        var pages = getSharedDecorPages();
+        if (pages && pages.length) pushDecorPagesToApp(pages);
+        else {
+          try {
+            if (iframeAdmin.contentWindow) {
+              iframeAdmin.contentWindow.postMessage({ type: 'decor-page-request-sync' }, '*');
+            }
+          } catch (err2) {}
+        }
+      });
+
+      iframeAdmin.addEventListener('load', function () {
+        var pages = getSharedDecorPages();
+        if (pages && pages.length) pushDecorPagesToAdmin(pages);
+      });
+
+      var PRODUCT_KEY = 'zhuangyan_product_list_v1';
+
+      function getSharedProducts() {
+        try {
+          var raw = localStorage.getItem(PRODUCT_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedProducts(products) {
+        if (!Array.isArray(products)) return;
+        try {
+          localStorage.setItem(PRODUCT_KEY, JSON.stringify(products));
+        } catch (e) {}
+      }
+
+      function pushProductsToApp(products) {
+        if (!Array.isArray(products)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'product-sync',
+              products: products,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushProductsToAdmin(products) {
+        if (!Array.isArray(products)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'product-sync',
+              products: products,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'product-sync') return;
+        if (!Array.isArray(e.data.products)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedProducts(e.data.products);
+        pushProductsToApp(e.data.products);
+        pushProductsToAdmin(e.data.products); // APP 端商品上报 → 运营「商品管理」读取
+      });
+
+      var ARTICLE_KEY = 'zhuangyan_article_list_v1';
+
+      function getSharedArticles() {
+        try {
+          var raw = localStorage.getItem(ARTICLE_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedArticles(articles) {
+        if (!Array.isArray(articles)) return;
+        try {
+          localStorage.setItem(ARTICLE_KEY, JSON.stringify(articles));
+        } catch (e) {}
+      }
+
+      function pushArticlesToApp(articles) {
+        if (!Array.isArray(articles)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'article-sync',
+              articles: articles,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushArticlesToAdmin(articles) {
+        if (!Array.isArray(articles)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'article-sync',
+              articles: articles,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'article-sync') return;
+        if (!Array.isArray(e.data.articles)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedArticles(e.data.articles);
+        pushArticlesToApp(e.data.articles);
+        pushArticlesToAdmin(e.data.articles);
+      });
+
+      var GRASS_KEY = 'yueji_grass_list_v2';
+
+      function getSharedGrasses() {
+        try {
+          var raw = localStorage.getItem(GRASS_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        /* 兼容旧 key */
+        try {
+          var legacy = localStorage.getItem('zhuangyan_grass_list_v1');
+          if (legacy) {
+            var parsedLegacy = JSON.parse(legacy);
+            if (Array.isArray(parsedLegacy) && parsedLegacy.length) return parsedLegacy;
+          }
+        } catch (e2) {}
+        return null;
+      }
+
+      function setSharedGrasses(grasses) {
+        if (!Array.isArray(grasses)) return;
+        try {
+          localStorage.setItem(GRASS_KEY, JSON.stringify(grasses));
+        } catch (e) {}
+      }
+
+      function pushGrassesToApp(grasses) {
+        if (!Array.isArray(grasses)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'grass-sync',
+              grasses: grasses,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushGrassesToAdmin(grasses) {
+        if (!Array.isArray(grasses)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'grass-sync',
+              grasses: grasses,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'grass-sync') return;
+        if (!Array.isArray(e.data.grasses)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedGrasses(e.data.grasses);
+        pushGrassesToApp(e.data.grasses);
+        pushGrassesToAdmin(e.data.grasses);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'grass-request-sync') return;
+        var shared = getSharedGrasses();
+        if (shared && shared.length) {
+          pushGrassesToApp(shared);
+          pushGrassesToAdmin(shared);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'grass-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      var TOPIC_KEY = 'zhuangyan_topic_list_v1';
+
+      function getSharedTopics() {
+        try {
+          var raw = localStorage.getItem(TOPIC_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedTopics(topics) {
+        if (!Array.isArray(topics)) return;
+        try {
+          localStorage.setItem(TOPIC_KEY, JSON.stringify(topics));
+        } catch (e) {}
+      }
+
+      function pushTopicsToApp(topics) {
+        if (!Array.isArray(topics)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'topic-sync',
+              topics: topics,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushTopicsToAdmin(topics) {
+        if (!Array.isArray(topics)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'topic-sync',
+              topics: topics,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'topic-sync') return;
+        if (!Array.isArray(e.data.topics)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedTopics(e.data.topics);
+        pushTopicsToApp(e.data.topics);
+      });
+
+      var CIRCLE_KEY = 'zhuangyan_circle_list_v1';
+
+      function getSharedCircles() {
+        try {
+          var raw = localStorage.getItem(CIRCLE_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedCircles(circles) {
+        if (!Array.isArray(circles)) return;
+        try {
+          localStorage.setItem(CIRCLE_KEY, JSON.stringify(circles));
+        } catch (e) {}
+      }
+
+      function pushCirclesToApp(circles) {
+        if (!Array.isArray(circles)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'circle-sync',
+              circles: circles,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushCirclesToAdmin(circles) {
+        if (!Array.isArray(circles)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'circle-sync',
+              circles: circles,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'circle-sync') return;
+        if (!Array.isArray(e.data.circles)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedCircles(e.data.circles);
+        pushCirclesToApp(e.data.circles);
+        pushCirclesToAdmin(e.data.circles);
+      });
+
+      var FEED_KEY = 'zhuangyan_feed_list_v1';
+
+      function getSharedFeeds() {
+        try {
+          var raw = localStorage.getItem(FEED_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedFeeds(feeds) {
+        if (!Array.isArray(feeds)) return;
+        try {
+          localStorage.setItem(FEED_KEY, JSON.stringify(feeds));
+        } catch (e) {}
+      }
+
+      function pushFeedsToApp(feeds) {
+        if (!Array.isArray(feeds)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'feed-sync',
+              feeds: feeds,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushFeedsToAdmin(feeds) {
+        if (!Array.isArray(feeds)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'feed-sync',
+              feeds: feeds,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'feed-sync') return;
+        if (!Array.isArray(e.data.feeds)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedFeeds(e.data.feeds);
+        pushFeedsToApp(e.data.feeds);
+        pushFeedsToAdmin(e.data.feeds);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'feed-request-sync') return;
+        var sharedFeeds = getSharedFeeds();
+        if (sharedFeeds) {
+          pushFeedsToApp(sharedFeeds);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'feed-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      /* ===== 评价同步（运营 ↔ APP 闭环） ===== */
+      var REVIEW_KEY = 'zhuangyan_review_list_v1';
+      function getSharedReviews() {
+        try {
+          var raw = localStorage.getItem(REVIEW_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+      function setSharedReviews(reviews) {
+        if (!Array.isArray(reviews)) return;
+        try { localStorage.setItem(REVIEW_KEY, JSON.stringify(reviews)); } catch (e) {}
+      }
+      function pushReviewsToApp(reviews) {
+        if (!Array.isArray(reviews)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'review-sync',
+              reviews: reviews,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (err) {}
+      }
+      function pushReviewsToAdmin(reviews) {
+        if (!Array.isArray(reviews)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'review-sync',
+              reviews: reviews,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (err) {}
+      }
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'review-sync') return;
+        if (!Array.isArray(e.data.reviews)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedReviews(e.data.reviews);
+        pushReviewsToApp(e.data.reviews);
+        pushReviewsToAdmin(e.data.reviews);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'review-request-sync') return;
+        var shared = getSharedReviews();
+        if (shared) {
+          pushReviewsToApp(shared);
+          pushReviewsToAdmin(shared);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'review-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      var ACTIVITY_KEY = 'zhuangyan_activity_list_v2';
+      var ACTIVITY_KEY_LEGACY = 'zhuangyan_activity_list_v1';
+
+      function getSharedActivities() {
+        try {
+          var raw = localStorage.getItem(ACTIVITY_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length >= 600) return parsed;
+            if (Array.isArray(parsed) && parsed.length && parsed[0] && /^MJ|MZ|SK|PT|CP|GF/i.test(String(parsed[0].id || ''))) {
+              return parsed;
+            }
+          }
+          raw = localStorage.getItem(ACTIVITY_KEY_LEGACY);
+          if (raw) {
+            var legacy = JSON.parse(raw);
+            if (Array.isArray(legacy) && legacy.length >= 600) return legacy;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedActivities(activities) {
+        if (!Array.isArray(activities)) return;
+        try {
+          localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activities));
+        } catch (e) {}
+      }
+
+      function pushActivitiesToApp(activities) {
+        if (!Array.isArray(activities)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'activity-sync',
+              activities: activities,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushActivitiesToAdmin(activities) {
+        if (!Array.isArray(activities)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'activity-sync',
+              activities: activities,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'activity-sync') return;
+        if (!Array.isArray(e.data.activities)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedActivities(e.data.activities);
+        pushActivitiesToApp(e.data.activities);
+        pushActivitiesToAdmin(e.data.activities);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'activity-request-sync') return;
+        var sharedActivities = getSharedActivities();
+        if (sharedActivities) {
+          pushActivitiesToApp(sharedActivities);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'activity-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      /* ===== 已领券同步：APP 领取 ↔ 运营参与数 / 双端已领状态 ===== */
+      var CLAIMED_COUPON_KEY = 'zhuangyan_claimed_coupons_v1';
+
+      function getSharedClaimedCoupons() {
+        try {
+          var raw = localStorage.getItem(CLAIMED_COUPON_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return parsed.map(String);
+          }
+        } catch (e) {}
+        return [];
+      }
+
+      function setSharedClaimedCoupons(ids) {
+        if (!Array.isArray(ids)) return;
+        try {
+          localStorage.setItem(CLAIMED_COUPON_KEY, JSON.stringify(ids.map(String)));
+        } catch (e) {}
+      }
+
+      function pushClaimedCouponsToApp(ids) {
+        if (!Array.isArray(ids)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'claimed-coupon-sync',
+              claimedIds: ids,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (err) {}
+      }
+
+      function pushClaimedCouponsToAdmin(ids) {
+        if (!Array.isArray(ids)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'claimed-coupon-sync',
+              claimedIds: ids,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (err) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'claimed-coupon-sync') return;
+        if (!Array.isArray(e.data.claimedIds)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedClaimedCoupons(e.data.claimedIds);
+        pushClaimedCouponsToApp(e.data.claimedIds);
+        pushClaimedCouponsToAdmin(e.data.claimedIds);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'claimed-coupon-request-sync') return;
+        var shared = getSharedClaimedCoupons();
+        pushClaimedCouponsToApp(shared);
+        pushClaimedCouponsToAdmin(shared);
+      });
+
+      var PROFILE_ORDER_KEY = 'zhuangyan_profile_orders_v1';
+
+      function getSharedProfileOrders() {
+        try {
+          var raw = localStorage.getItem(PROFILE_ORDER_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedProfileOrders(orders) {
+        if (!Array.isArray(orders)) return;
+        try {
+          localStorage.setItem(PROFILE_ORDER_KEY, JSON.stringify(orders));
+        } catch (e) {}
+      }
+
+      function pushProfileOrdersToApp(orders) {
+        if (!Array.isArray(orders)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'profile-order-sync',
+              orders: orders,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushProfileOrdersToAdmin(orders) {
+        if (!Array.isArray(orders)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'profile-order-sync',
+              orders: orders,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'profile-order-sync') return;
+        if (!Array.isArray(e.data.orders)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedProfileOrders(e.data.orders);
+        pushProfileOrdersToAdmin(e.data.orders);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'profile-order-request-sync') return;
+        var sharedOrders = getSharedProfileOrders();
+        if (sharedOrders && sharedOrders.length) {
+          pushProfileOrdersToAdmin(sharedOrders);
+          return;
+        }
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({ type: 'profile-order-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      var PROFILE_AFTERSALE_KEY = 'zhuangyan_profile_aftersales_v1';
+
+      function getSharedProfileAftersales() {
+        try {
+          var raw = localStorage.getItem(PROFILE_AFTERSALE_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedProfileAftersales(aftersales) {
+        if (!Array.isArray(aftersales)) return;
+        try {
+          localStorage.setItem(PROFILE_AFTERSALE_KEY, JSON.stringify(aftersales));
+        } catch (e) {}
+      }
+
+      function pushProfileAftersalesToAdmin(aftersales) {
+        if (!Array.isArray(aftersales)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'profile-aftersale-sync',
+              aftersales: aftersales,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushProfileAftersalesToApp(aftersales) {
+        if (!Array.isArray(aftersales)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'profile-aftersale-sync',
+              aftersales: aftersales,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'profile-aftersale-sync') return;
+        if (!Array.isArray(e.data.aftersales)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedProfileAftersales(e.data.aftersales);
+        pushProfileAftersalesToAdmin(e.data.aftersales);
+        pushProfileAftersalesToApp(e.data.aftersales);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'profile-aftersale-request-sync') return;
+        var sharedAftersales = getSharedProfileAftersales();
+        if (sharedAftersales && sharedAftersales.length) {
+          pushProfileAftersalesToAdmin(sharedAftersales);
+          pushProfileAftersalesToApp(sharedAftersales);
+          return;
+        }
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({ type: 'profile-aftersale-request-sync' }, '*');
+          }
+        } catch (err) {}
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'profile-aftersale-request-sync' }, '*');
+          }
+        } catch (err2) {}
+      });
+
+      var USER_KEY = 'zhuangyan_user_list_v1';
+
+      function getSharedUsers() {
+        try {
+          var raw = localStorage.getItem(USER_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) return parsed;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedUsers(users) {
+        if (!Array.isArray(users)) return;
+        try {
+          localStorage.setItem(USER_KEY, JSON.stringify(users));
+        } catch (e) {}
+      }
+
+      function pushUsersToApp(users) {
+        if (!Array.isArray(users)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'user-sync',
+              users: users,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushUsersToAdmin(users) {
+        if (!Array.isArray(users)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'user-sync',
+              users: users,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'user-sync') return;
+        if (!Array.isArray(e.data.users)) return;
+        if (e.data.source === 'workspace') return;
+        setSharedUsers(e.data.users);
+        pushUsersToApp(e.data.users);
+      });
+
+      /* ===== AI 配置同步（运营「大模型→AI配置」↔ App AI导购） ===== */
+      var AI_CONFIG_KEY = 'zhuangyan_ai_config_v1';
+      var LLM_SETTINGS_KEY = 'zhuangyan_llm_settings_v2';
+
+      function getSharedAiConfig() {
+        try {
+          var raw = localStorage.getItem(AI_CONFIG_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === 'object') return parsed;
+          }
+        } catch (e) {}
+        try {
+          var llmRaw = localStorage.getItem(LLM_SETTINGS_KEY);
+          if (llmRaw) {
+            var llm = JSON.parse(llmRaw);
+            if (llm && llm.ai && llm.ai.aiCfg) return llm.ai.aiCfg;
+          }
+        } catch (e2) {}
+        return null;
+      }
+
+      function setSharedAiConfig(payload) {
+        if (!payload || typeof payload !== 'object') return;
+        try {
+          localStorage.setItem(AI_CONFIG_KEY, JSON.stringify(payload));
+        } catch (e) {
+          try {
+            var slim = JSON.parse(JSON.stringify(payload));
+            ['kefu', 'daogou', 'shitu'].forEach(function (m) {
+              if (slim[m]) slim[m].avatar = '';
+            });
+            localStorage.setItem(AI_CONFIG_KEY, JSON.stringify(slim));
+          } catch (eSlim) { /* ignore */ }
+        }
+        try {
+          var llmRaw = localStorage.getItem(LLM_SETTINGS_KEY);
+          var llm = llmRaw ? JSON.parse(llmRaw) : {};
+          if (!llm || typeof llm !== 'object') llm = {};
+          llm.ai = llm.ai || {};
+          llm.ai.aiCfg = payload;
+          localStorage.setItem(LLM_SETTINGS_KEY, JSON.stringify(llm));
+        } catch (e2) {
+          try {
+            var llmRaw2 = localStorage.getItem(LLM_SETTINGS_KEY);
+            var llm2 = llmRaw2 ? JSON.parse(llmRaw2) : {};
+            if (!llm2 || typeof llm2 !== 'object') llm2 = {};
+            llm2.ai = llm2.ai || {};
+            var slim2 = JSON.parse(JSON.stringify(payload));
+            ['kefu', 'daogou', 'shitu'].forEach(function (m) {
+              if (slim2[m]) slim2[m].avatar = '';
+            });
+            llm2.ai.aiCfg = slim2;
+            localStorage.setItem(LLM_SETTINGS_KEY, JSON.stringify(llm2));
+          } catch (e3) { /* ignore */ }
+        }
+      }
+
+      function pushAiConfigToApp(payload) {
+        if (!payload || typeof payload !== 'object') return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'ai-config-sync',
+              payload: payload,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushAiConfigToAdmin(payload) {
+        if (!payload || typeof payload !== 'object') return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'ai-config-sync',
+              payload: payload,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'ai-config-sync') return;
+        if (!e.data.payload || typeof e.data.payload !== 'object') return;
+        if (e.data.source === 'workspace') return;
+        setSharedAiConfig(e.data.payload);
+        pushAiConfigToApp(e.data.payload);
+        pushAiConfigToAdmin(e.data.payload);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'ai-config-request-sync') return;
+        var shared = getSharedAiConfig();
+        if (shared) {
+          pushAiConfigToApp(shared);
+          pushAiConfigToAdmin(shared);
+          return;
+        }
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'ai-config-request-sync' }, '*');
+          }
+        } catch (err) {}
+      });
+
+      /* ===== 人工客服会话双向同步（App ↔ 运营接待台） ===== */
+      var KEFU_SESSION_KEY = 'zhuangyan_kefu_sessions_v2';
+      var KEFU_SESSION_KEY_LEGACY = 'zhuangyan_kefu_sessions_v1';
+
+      function getSharedKefuSessions() {
+        try {
+          var raw = localStorage.getItem(KEFU_SESSION_KEY);
+          if (raw) {
+            var parsed = JSON.parse(raw);
+            if (Array.isArray(parsed) && parsed.length) {
+              if (parsed.length >= 300 || (parsed[0] && /^KF(AI|HM|TF)/i.test(String(parsed[0].id || '')))) {
+                return parsed;
+              }
+            }
+          }
+          raw = localStorage.getItem(KEFU_SESSION_KEY_LEGACY);
+          if (raw) {
+            var legacy = JSON.parse(raw);
+            if (Array.isArray(legacy) && legacy.length >= 300) return legacy;
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      function setSharedKefuSessions(list) {
+        if (!Array.isArray(list)) return;
+        try {
+          localStorage.setItem(KEFU_SESSION_KEY, JSON.stringify(list));
+        } catch (e) {}
+      }
+
+      function pushKefuSessionsToApp(list) {
+        if (!Array.isArray(list)) return;
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({
+              type: 'kefu-session-sync',
+              payload: list,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      function pushKefuSessionsToAdmin(list) {
+        if (!Array.isArray(list)) return;
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({
+              type: 'kefu-session-sync',
+              payload: list,
+              source: 'workspace'
+            }, '*');
+          }
+        } catch (e) {}
+      }
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'kefu-session-sync') return;
+        if (!Array.isArray(e.data.payload)) return;
+        if (e.data.source === 'workspace') return;
+        var incoming = e.data.payload;
+        var current = getSharedKefuSessions() || [];
+        var merged = incoming;
+        try {
+          if (iframeAdmin.contentWindow && iframeAdmin.contentWindow.KefuStore
+              && typeof iframeAdmin.contentWindow.KefuStore.mergeSessionLists === 'function') {
+            merged = iframeAdmin.contentWindow.KefuStore.mergeSessionLists(current, incoming);
+          } else if (iframeApp.contentWindow && iframeApp.contentWindow.KefuStore
+              && typeof iframeApp.contentWindow.KefuStore.mergeSessionLists === 'function') {
+            merged = iframeApp.contentWindow.KefuStore.mergeSessionLists(current, incoming);
+          } else {
+            /* 简易合并兜底 */
+            var map = {};
+            function take(list) {
+              for (var i = 0; i < (list || []).length; i++) {
+                var s = list[i];
+                if (!s || !s.id) continue;
+                var prev = map[s.id];
+                if (!prev) { map[s.id] = s; continue; }
+                var ta = String(s.updatedAt || '');
+                var tb = String(prev.updatedAt || '');
+                if (ta > tb || (ta === tb && (s.messages || []).length >= (prev.messages || []).length)) {
+                  map[s.id] = s;
+                }
+              }
+            }
+            take(current);
+            take(incoming);
+            merged = Object.keys(map).map(function (k) { return map[k]; });
+          }
+        } catch (eMerge) { merged = incoming; }
+        /* 指纹去重：相同快照不重复 push，切断客服会话同步风暴 */
+        var fp = '';
+        try {
+          fp = String((merged && merged.length) || 0) + ':' + String((merged[0] && merged[0].updatedAt) || '') + ':' + String((merged[merged.length - 1] && merged[merged.length - 1].id) || '');
+        } catch (eFp) { fp = String((merged && merged.length) || 0); }
+        if (window.__kefuSyncFp === fp) return;
+        window.__kefuSyncFp = fp;
+        setSharedKefuSessions(merged);
+        pushKefuSessionsToApp(merged);
+        pushKefuSessionsToAdmin(merged);
+      });
+
+      window.addEventListener('message', function (e) {
+        if (!e.data || e.data.type !== 'kefu-session-request-sync') return;
+        var shared = getSharedKefuSessions();
+        if (shared) {
+          pushKefuSessionsToApp(shared);
+          pushKefuSessionsToAdmin(shared);
+          return;
+        }
+        try {
+          if (iframeApp.contentWindow) {
+            iframeApp.contentWindow.postMessage({ type: 'kefu-session-request-sync', source: 'workspace' }, '*');
+          }
+        } catch (err1) {}
+        try {
+          if (iframeAdmin.contentWindow) {
+            iframeAdmin.contentWindow.postMessage({ type: 'kefu-session-request-sync', source: 'workspace' }, '*');
+          }
+        } catch (err2) {}
+      });
+
+      iframeApp.addEventListener('load', function () {
+        var kf = getSharedKefuSessions();
+        if (kf && kf.length) pushKefuSessionsToApp(kf);
+      });
+      iframeAdmin.addEventListener('load', function () {
+        var kf2 = getSharedKefuSessions();
+        if (kf2 && kf2.length) pushKefuSessionsToAdmin(kf2);
+        else {
+          try {
+            if (iframeApp.contentWindow) {
+              iframeApp.contentWindow.postMessage({ type: 'kefu-session-request-sync', source: 'workspace' }, '*');
+            }
+          } catch (eKfReq) {}
+        }
+      });
+
+      /* 默认同屏对比；运营端由错峰逻辑加载 */
+      setMode('split');
+      booting = false;
+
+      /* 恢复左侧 App 分栏宽度 */
+      try {
+        var savedWidth = parseInt(localStorage.getItem(STORAGE_WIDTH), 10);
+        if (savedWidth >= 280 && savedWidth <= 800) {
+          workspace.style.setProperty('--app-panel-width', savedWidth + 'px');
+        }
+      } catch (e) {}
+
+      /* 拖动分隔条 */
+      var dragging = false;
+      var startX = 0;
+      var startWidth = 0;
+
+      splitDivider.addEventListener('mousedown', function (e) {
+        if (!workspace.classList.contains('mode-split')) return;
+        dragging = true;
+        startX = e.clientX;
+        startWidth = workspace.querySelector('.panel-app').offsetWidth;
+        splitDivider.classList.add('dragging');
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', function (e) {
+        if (!dragging) return;
+        var delta = e.clientX - startX;
+        var newWidth = Math.max(280, Math.min(startWidth + delta, window.innerWidth - 400));
+        workspace.style.setProperty('--app-panel-width', newWidth + 'px');
+      });
+
+      document.addEventListener('mouseup', function () {
+        if (!dragging) return;
+        dragging = false;
+        splitDivider.classList.remove('dragging');
+        document.body.style.cursor = '';
+        document.body.style.userSelect = '';
+        try {
+          var w = workspace.querySelector('.panel-app').offsetWidth;
+          localStorage.setItem(STORAGE_WIDTH, String(w));
+        } catch (e) {}
+      });
+
+      /* 快捷键：1/2/3 切换视图 */
+      document.addEventListener('keydown', function (e) {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === '1') setMode('split');
+        if (e.key === '2') setMode('app');
+        if (e.key === '3') setMode('admin');
+      });
+    })();
+  </script>
+</body>
+</html>

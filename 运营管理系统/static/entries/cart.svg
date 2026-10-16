@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="cartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DDD6FE"/>
+      <stop offset="100%" stop-color="#8B7CF6"/>
+    </linearGradient>
+    <filter id="cartShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#6D5BD0" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <path d="M12 16h8l4 28h28l6-20H26" fill="none" stroke="url(#cartGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#cartShadow)"/>
+  <path d="M24 44h26l5-16H28z" fill="url(#cartGrad)"/>
+  <circle cx="30" cy="52" r="4" fill="#8B7CF6"/>
+  <circle cx="46" cy="52" r="4" fill="#8B7CF6"/>
+  <rect x="34" y="28" width="10" height="3" rx="1.5" fill="#FFFFFF" opacity="0.7"/>
+</svg>

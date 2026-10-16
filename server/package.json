@@ -1,0 +1,27 @@
+{
+  "name": "meilixiuxing-server",
+  "version": "1.0.0",
+  "description": "美丽修行 / 阅己美妆 · MySQL API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "seed:spgl": "node seed-spgl.js",
+    "seed:pinglunbiao": "node seed-pinglunbiao.js",
+    "seed:zhongcaobiao": "node seed-zhongcaobiao.js",
+    "seed:admin": "node seed-admin-lists.js",
+    "seed:ops": "node seed-ops-modules.js",
+    "seed:users": "node seed-users-1001.js",
+    "seed:products": "node seed-products-100.js",
+    "seed:activities": "node seed-activities-100.js",
+    "seed:kefu": "node seed-kefu-lists.js",
+    "seed:kefu-sessions": "node seed-kefu-sessions-100.js",
+    "seed:aiguide-feedback": "node seed-aiguide-feedback-100.js",
+    "seed:ai-help": "node seed-ai-help-articles.js",
+    "seed:community": "node seed-community.js",
+    "seed:all-ops": "node seed-products-100.js && node seed-ops-modules.js && node seed-users-1001.js && node seed-activities-100.js && node seed-community.js && node seed-kefu-sessions-100.js && node seed-kefu-lists.js && node seed-ai-help-articles.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.24.2"
+  }
+}

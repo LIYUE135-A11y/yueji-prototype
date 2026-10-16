@@ -1,0 +1,335 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/guide/protect",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "每日防护",
+        "backgroundColor": "#F5F3FA"
+      }
+    },
+    {
+      "path": "pages/trial/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "试用中心",
+        "backgroundColor": "#F5F5F7"
+      }
+    },
+    {
+      "path": "pages/trial/mine",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的试用",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/skin-guide/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "准备开始拍照测肤",
+        "backgroundColor": "#E8E4F8"
+      }
+    },
+    {
+      "path": "pages/plan/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI定制方案",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/ai-guide/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI导购",
+        "backgroundColor": "#F7F3FF"
+      }
+    },
+    {
+      "path": "pages/ai-kefu/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI客服",
+        "backgroundColor": "#F5F7FF"
+      }
+    },
+    {
+      "path": "pages/ai-help/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI帮助中心",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/message/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "消息",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/points/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "积分商城",
+        "backgroundColor": "#F6F7F2"
+      }
+    },
+    {
+      "path": "pages/plan/report",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "AI肤质报告",
+        "backgroundColor": "#F3EFFC"
+      }
+    },
+    {
+      "path": "pages/rank/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "阅己榜单",
+        "backgroundColor": "#F5F5F5"
+      }
+    },
+    {
+      "path": "pages/batch/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "批号查询",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/desk/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的梳妆台",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/quiz/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "小问答",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/activity/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "活动详情",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/decor/page",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "专题页",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/product/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "商品详情",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/coupon/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "领券中心",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/cart/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的购物车",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/order/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的订单",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/pay/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "确认支付",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/pay/password",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "输入支付密码",
+        "backgroundColor": "#F5F6FA"
+      }
+    },
+    {
+      "path": "pages/pay/success",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "支付成功",
+        "backgroundColor": "#F5F6FA"
+      }
+    },
+    {
+      "path": "pages/review/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "回复详情",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/content/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "内容详情",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/discover/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/skin-test/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/skin-camera/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "拍照测肤",
+        "backgroundColor": "#3a322c",
+        "app-plus": {
+          "background": "#3a322c"
+        }
+      }
+    },
+    {
+      "path": "pages/beauty-box/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/beauty-box/weekly",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "阅己盒周一10点上新",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/beauty-box/flash",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "大牌5件5折心动尝鲜",
+        "backgroundColor": "#F7F5FC"
+      }
+    },
+    {
+      "path": "pages/beauty-box/guess",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "猜你喜欢",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/beauty-box/newbie",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "新人专区",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    {
+      "path": "pages/profile/index",
+      "style": {
+        "navigationStyle": "custom",
+        "backgroundColor": "#FFFFFF"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "阅己美妆",
+    "navigationBarBackgroundColor": "#8B7CF6",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#8B7CF6",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/discover/index",
+        "text": "发现",
+        "iconPath": "static/tabbar/discover.png",
+        "selectedIconPath": "static/tabbar/discover-active.png"
+      },
+      {
+        "pagePath": "pages/skin-test/index",
+        "text": "测肤",
+        "iconPath": "static/tabbar/skin.png",
+        "selectedIconPath": "static/tabbar/skin-active.png"
+      },
+      {
+        "pagePath": "pages/beauty-box/index",
+        "text": "阅己盒",
+        "iconPath": "static/tabbar/box.png",
+        "selectedIconPath": "static/tabbar/box-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "static/tabbar/profile.png",
+        "selectedIconPath": "static/tabbar/profile-active.png"
+      }
+    ]
+  }
+}

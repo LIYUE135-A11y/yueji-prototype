@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <linearGradient id="msgBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C4B5FD"/>
+      <stop offset="100%" stop-color="#8B7CF6"/>
+    </linearGradient>
+    <filter id="msgShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#6D5BD0" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <path d="M8 12c0-2.2 1.8-4 4-4h24c2.2 0 4 1.8 4 4v18c0 2.2-1.8 4-4 4H20l-8 8V34H12c-2.2 0-4-1.8-4-4V12z" fill="url(#msgBg)" filter="url(#msgShadow)"/>
+  <circle cx="18" cy="21" r="2.2" fill="#fff"/>
+  <circle cx="24" cy="21" r="2.2" fill="#fff"/>
+  <circle cx="30" cy="21" r="2.2" fill="#fff"/>
+</svg>

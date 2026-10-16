@@ -1,0 +1,56 @@
+/* 阅己美妆 - 主题变量（对齐图一柔和紫粉风格） */
+
+$primary-color: #8A63F2;
+$primary-light: #A78BFA;
+$primary-dark: #6D5BD0;
+$accent-pink: #F472B6;
+$primary-bg: #FFFFFF;
+$primary-gradient-start: #FFFFFF;
+$primary-gradient-end: #FFFFFF;
+$header-gradient: #FFFFFF;
+
+$text-primary: #000000;
+$text-secondary: #333333;
+$text-hint: #666666;
+$text-white: #FFFFFF;
+
+$border-color: #EEEEEE;
+$card-bg: #FFFFFF;
+$shadow-color: rgba(138, 99, 242, 0.1);
+$purple-border: rgba(138, 99, 242, 0.12);
+$purple-surface: #F7F3FF;
+$purple-placeholder: #F0ECF8;
+$card-tint: #FAFAFC;
+$pink-mist: #FCE8F3;
+
+$tag-pink: #FF6B9D;
+$tag-red: #FF4757;
+$coin-gold: #FFC940;
+
+/** 固定视口页面外壳：顶栏固定，中间 scroll-view 滚动 */
+@mixin app-page-shell {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/** 页面主滚动区（配合 app-page-shell） */
+@mixin app-page-scroll {
+  flex: 1;
+  min-height: 0;
+}
+
+
+/** 固定视口页面：顶栏/底栏固定，中间 scroll-view 纵向滚动 */
+@mixin app-page-shell {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin app-page-scroll {
+  flex: 1;
+  min-height: 0;
+}

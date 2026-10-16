@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="skinBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8DEFF"/>
+      <stop offset="100%" stop-color="#C4B5FD"/>
+    </linearGradient>
+    <linearGradient id="faceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD6E8"/>
+      <stop offset="100%" stop-color="#F0A8C8"/>
+    </linearGradient>
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B7CF6" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#8B7CF6"/>
+      <stop offset="100%" stop-color="#8B7CF6" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#6D5BD0" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="28" fill="url(#skinBg)" filter="url(#shadow)"/>
+  <ellipse cx="32" cy="28" rx="12" ry="14" fill="url(#faceGrad)"/>
+  <path d="M20 44c2-6 7-9 12-9s10 3 12 9" fill="#F0A8C8"/>
+  <rect x="8" y="30" width="48" height="3" rx="1.5" fill="url(#scanGrad)" opacity="0.9"/>
+  <circle cx="48" cy="18" r="6" fill="#A78BFA" opacity="0.3"/>
+  <path d="M45 18l3 3 6-6" stroke="#8B7CF6" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>
