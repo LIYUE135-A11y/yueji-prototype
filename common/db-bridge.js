@@ -49,6 +49,64 @@
   var saveTimers = {};
   var originalSetItem = null;
   var syncingFromDb = false;
+  var SNAPSHOT_VER_KEY = 'meilixiuxing_db_snapshot_ver';
+
+  function resolveSnapshotUrl() {
+    if (global.MEILIXIUXING_SNAPSHOT) return String(global.MEILIXIUXING_SNAPSHOT);
+    try {
+      var scripts = document.getElementsByTagName('script');
+      for (var i = scripts.length - 1; i >= 0; i--) {
+        var src = scripts[i].src || '';
+        if (/db-bridge\.js/i.test(src)) {
+          return src.replace(/db-bridge\.js(\?.*)?$/i, 'db-snapshot.json');
+        }
+      }
+    } catch (e) { /* ignore */ }
+    return 'common/db-snapshot.json';
+  }
+
+  function loadSnapshot() {
+    return new Promise(function (resolve, reject) {
+      try {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', resolveSnapshotUrl(), true);
+        xhr.timeout = 20000;
+        xhr.onload = function () {
+          if (xhr.status < 200 || xhr.status >= 300) {
+            reject(new Error('snapshot HTTP ' + xhr.status));
+            return;
+          }
+          try {
+            resolve(JSON.parse(xhr.responseText || '{}'));
+          } catch (e) {
+            reject(e);
+          }
+        };
+        xhr.onerror = function () { reject(new Error('snapshot network error')); };
+        xhr.ontimeout = function () { reject(new Error('snapshot timeout')); };
+        xhr.send(null);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  }
+
+  function applySnapshotIfNeeded(snapshot) {
+    if (!snapshot || !snapshot.stores) return false;
+    var ver = String(snapshot.exportedAt || '');
+    var applied = false;
+    try {
+      if (!ver || localStorage.getItem(SNAPSHOT_VER_KEY) !== ver) {
+        applyStores(snapshot.stores);
+        if (ver) localStorage.setItem(SNAPSHOT_VER_KEY, ver);
+        applied = true;
+      }
+    } catch (e) {
+      applyStores(snapshot.stores);
+      applied = true;
+    }
+    return applied;
+  }
 
   function isTracked(key) {
     return STORE_KEYS.indexOf(key) >= 0;
@@ -185,8 +243,16 @@
       });
     }).catch(function (err) {
       clearTimeout(timer);
-      console.warn('[DbBridge] 数据库服务不可用，继续使用 localStorage:', err && err.message);
-      finish(false);
+      console.warn('[DbBridge] 数据库服务不可用，尝试加载离线快照:', err && err.message);
+      loadSnapshot().then(function (snapshot) {
+        var n = snapshot && snapshot.stores ? Object.keys(snapshot.stores).length : 0;
+        var applied = applySnapshotIfNeeded(snapshot);
+        console.log('[DbBridge] 离线快照', applied ? '已写入' : '已是最新', n, '组 →', snapshot && snapshot.exportedAt);
+        finish(false);
+      }).catch(function (snapErr) {
+        console.warn('[DbBridge] 离线快照不可用，继续使用 localStorage:', snapErr && snapErr.message);
+        finish(false);
+      });
     });
     return { online: false, ready: true };
   }
